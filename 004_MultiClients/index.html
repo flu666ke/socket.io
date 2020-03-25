@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo</title>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      window.onload = function() {
+        var btn1 = document.getElementById('btn1');
+        var btn2 = document.getElementById('btn2');
+        var containers = document.getElementsByTagName('h3');
+
+        btn1.onclick = function() {
+          // создать первое подключение
+          var socket = io.connect('http://localhost:8080');
+
+          socket.on('data', function(data) {
+            containers[0].innerHTML += data.message + '</br>';
+
+            socket.emit('response', { message: 'client 1 got data' });
+            socket.disconnect();
+          });
+        };
+
+        btn2.onclick = function() {
+          // создать второе подключение
+          var socket = io.connect('http://localhost:8080');
+
+          socket.on('data', function(data) {
+            containers[1].innerHTML += data.message + '</br>';
+
+            socket.emit('response', { message: 'client 2 got data' });
+            socket.disconnect();
+          });
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <div>
+      <div>
+        <button id="btn1">Get data 1</button>
+        <h3></h3>
+      </div>
+      <div>
+        <button id="btn2">Get data 1</button>
+        <h3></h3>
+      </div>
+    </div>
+  </body>
+</html>
