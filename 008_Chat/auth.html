@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <script src="/socket.io/socket.io.js"></script>
+    <title>Enter Chat!</title>
+    <style>
+      body {
+        overflow: hidden;
+        background-color: aliceblue;
+      }
+      #username {
+        display: inline-block;
+      }
+      .col-md-12 {
+        text-align: center;
+      }
+      .wrap {
+        width: 500px;
+        display: inline-block;
+        margin-top: 350px;
+      }
+    </style>
+    <script>
+      window.onload = function() {
+        var btn = document.getElementsByTagName('button')[0];
+        var inp = document.getElementsByTagName('input')[0];
+
+        btn.onclick = function() {
+          if (inp.value == '') {
+            alert('invalid username! try again!');
+            return;
+          }
+
+          // перенаправляем на страницу чата
+          window.location.href = '/' + inp.value;
+        };
+      };
+    </script>
+  </head>
+  <body>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="wrap">
+          <h1>Ignite chat!</h1>
+          <div class="input-group">
+            <input
+              type="text"
+              class="input-lg form-control"
+              id="username"
+              placeholder="Username..."
+            />
+            <span class="input-group-btn">
+              <button class="btn btn-lg btn-warning">Connect</button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

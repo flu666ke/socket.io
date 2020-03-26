@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo</title>
+    <script
+      src="https://code.jquery.com/jquery-3.4.1.js"
+      integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+      crossorigin="anonymous"
+    ></script>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        background-color: aliceblue;
+        overflow-x: hidden;
+      }
+      #msg_form {
+        position: absolute;
+        margin-bottom: 0;
+        bottom: 0;
+      }
+      h1 {
+        text-align: center;
+      }
+      #users {
+        height: 300px;
+        padding-left: 30px;
+        opacity: 0.8;
+      }
+      #users ul {
+        list-style-type: none;
+      }
+    </style>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
+  </head>
+  <body>
+    <div id="wrap">
+      <div class="row">
+        <div class="col-md-12 panel">
+          <h1>Messages</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-2 panel" id="users">
+          <h3>Users online:</h3>
+          <ul id="userlist"></ul>
+        </div>
+        <div class="col-md-12">
+          <div id="messages"></div>
+        </div>
+      </div>
+      <div class="row well" id="mfg_form">
+        <div class="col-md-12">
+          <div class="input-group">
+            <input
+              type="text"
+              id="inp"
+              class="form-control input-lg"
+              placeholder="Message..."
+            />
+            <span class="input-group-btn">
+              <button class="btn btn-lg btn-success" type="button" id="btn">
+                Send!
+              </button>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
